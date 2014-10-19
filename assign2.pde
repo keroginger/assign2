@@ -193,8 +193,7 @@ void keyPressed() {
      frogX = frogInitX;
      frogY = frogInitY;
     }
-    println(frogX);
-    println(frogY);
+  
      if (frogY==pondY){
         gameState=GAME_WIN;
      }

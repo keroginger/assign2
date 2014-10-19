@@ -187,9 +187,14 @@ void keyPressed() {
           break;
       }
       }
-      if (frogX>width||frogX<0||frogY>frogInitY){
-         frogX = frogInitX;
-     frogY = frogInitY;
+      if (frogX> width-32){
+         frogX = width-32;
+      }
+      else if(frogX<0){
+         frogX=0;
+      }
+      else if(frogY>frogInitY){
+         frogY=frogInitY;
       }
     if(key==ENTER && gameState!= GAME_RUN){
       gameState = GAME_RUN;

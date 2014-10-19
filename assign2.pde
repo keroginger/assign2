@@ -196,7 +196,7 @@ void keyPressed() {
       else if(frogY>frogInitY){
          frogY=frogInitY;
       }
-    if(key==ENTER && gameState!= GAME_RUN){
+    if(key==ENTER && gameState!= GAME_RUN && gameState != FROG_DIE){
       gameState = GAME_RUN;
       life=3;
      frogX = frogInitX;

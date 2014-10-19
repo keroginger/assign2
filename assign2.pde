@@ -8,7 +8,7 @@ float pondY;
 
 float speed;
 
-int life;
+int life=3;
 int currentTime = 0;
 
 final int GAME_START = 1;
@@ -111,14 +111,14 @@ void draw(){
          image(imgLeftCar2, leftCar2X, leftCar2Y);
   
          //car3 move
-         rightCar1X -= speed;
+         rightCar1X -= speed*1.5;
          if (rightCar1X < 0){
              rightCar1X = width;
          }
          image(imgRightCar1, rightCar1X, rightCar1Y);
 
          //car4 move
-         rightCar2X -= speed;
+         rightCar2X -= speed*0.7;
          if (rightCar2X < 0){
              rightCar2X = width;
          }
@@ -187,17 +187,23 @@ void keyPressed() {
           break;
       }
       }
+      if (frogX>width||frogX<0||frogY>frogInitY){
+         frogX = frogInitX;
+     frogY = frogInitY;
+      }
     if(key==ENTER && gameState!= GAME_RUN){
       gameState = GAME_RUN;
       life=3;
      frogX = frogInitX;
      frogY = frogInitY;
+     
     }
-  
+    
      if (frogY==pondY){
         gameState=GAME_WIN;
      }
-    if(life==0){
+    
+  if(life==0){
      gameState=GAME_LOSE;
   }
   

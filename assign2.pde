@@ -127,33 +127,46 @@ void draw(){
          float frogCX = frogX+frogW/2;
          float frogCY = frogY+frogH/2;
          // car1 hitTest
-         if(leftCar1X <= frogX+16 && leftCar1X-16 >=frogX-16 && frogY==128){
-           currentTime = millis();
-           image(imgDeadFrog, frogX, frogY);
-           life--;
-           gameState = FROG_DIE;
-         }
+           if(frogCX>leftCar1X && frogCX<leftCar1X+48 && frogCY>leftCar1Y && frogCY<leftCar1Y+48)
+           {
+             currentTime = millis();
+             image(imgDeadFrog, frogX, frogY);
+             life--;
+             gameState = FROG_DIE;
+           }             
          // car2 hitTest
-        if(rightCar1X <= frogX+16 && rightCar1X-16 >=frogX-16 && frogY==192){
-           currentTime = millis();
-           image(imgDeadFrog, frogX, frogY);
-           life--;
-           gameState = FROG_DIE;
-         }
-         // car3 hitTest
-         if(leftCar2X <= frogX+16 && leftCar2X-16 >=frogX-16 && frogY==256){
-           currentTime = millis();
-           image(imgDeadFrog, frogX, frogY);
-           life--;
-           gameState = FROG_DIE;
-         }
-         // car4 hitTest
-         if(rightCar2X <= frogX+16 && rightCar2X-16 >=frogX-16 && frogY==320){
-           currentTime = millis();
-           image(imgDeadFrog, frogX, frogY);
-           life--;
-         gameState = FROG_DIE;
-         } 
+           if(frogCX>rightCar1X && frogCX<rightCar1X+48 && frogCY>rightCar1Y && frogCY<rightCar1Y+48)
+           {
+               currentTime = millis();
+               image(imgDeadFrog, frogX, frogY);
+               life--;
+               gameState = FROG_DIE;
+           }             
+           // car3 hitTest
+           if(frogCX>leftCar2X && frogCX<leftCar2X+48 && frogCY>leftCar2Y && frogCY<leftCar2Y+48)
+           {
+               currentTime = millis();
+               image(imgDeadFrog, frogX, frogY);
+               life--;
+               gameState = FROG_DIE;
+           }             
+           // car4 hitTest
+                if(frogCX>rightCar2X && frogCX<rightCar2X+48 && frogCY>rightCar2Y && frogCY<rightCar2Y+48)
+                {
+               currentTime = millis();
+               image(imgDeadFrog, frogX, frogY);
+               life--;
+               gameState = FROG_DIE;
+           }
+            //frog win
+               if(frogY <= 32){
+                 gameState = GAME_WIN;
+               }
+           
+           //frog lose
+               if(life == 0){
+                 gameState = GAME_LOSE;
+               }
         break;
     case GAME_WIN:
         background(0);
@@ -204,12 +217,6 @@ void keyPressed() {
      
     }
     
-     if (frogY==pondY){
-        gameState=GAME_WIN;
-     }
     
-  if(life==0){
-     gameState=GAME_LOSE;
-  }
   
 }
